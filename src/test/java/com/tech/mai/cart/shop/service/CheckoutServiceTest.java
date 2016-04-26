@@ -19,10 +19,10 @@ public class CheckoutServiceTest extends TestCase {
     @Test
     public void testSumUpCartItems() {
         List<Item> cartItems = new ArrayList<>();
-        cartItems.add(new Item(123, new BigDecimal("0.60"), DiscountType.NONE));
-        cartItems.add(new Item(123, new BigDecimal("0.60"), DiscountType.NONE));
-        cartItems.add(new Item(124, new BigDecimal("0.25"), DiscountType.NONE));
-        cartItems.add(new Item(123, new BigDecimal("0.60"), DiscountType.NONE));
+        cartItems.add(new Item(123, "Apple", new BigDecimal("0.60"), DiscountType.NONE));
+        cartItems.add(new Item(123, "Apple", new BigDecimal("0.60"), DiscountType.NONE));
+        cartItems.add(new Item(124, "Orange", new BigDecimal("0.25"), DiscountType.NONE));
+        cartItems.add(new Item(123, "Apple", new BigDecimal("0.60"), DiscountType.NONE));
 
         assertEquals(0, new BigDecimal("2.05").compareTo(checkoutService.sumUpCartItems(cartItems)));
     }
@@ -30,10 +30,10 @@ public class CheckoutServiceTest extends TestCase {
     @Test
     public void testSumUpCartItemsWithTwoForOneSpecialOffers() {
         List<Item> cartItems = new ArrayList<>();
-        cartItems.add(new Item(123, new BigDecimal("0.60"), DiscountType.TWO4ONE));
-        cartItems.add(new Item(123, new BigDecimal("0.60"), DiscountType.TWO4ONE));
-        cartItems.add(new Item(124, new BigDecimal("0.25"), DiscountType.THREE4TWO));
-        cartItems.add(new Item(123, new BigDecimal("0.60"), DiscountType.TWO4ONE));
+        cartItems.add(new Item(123, "Apple", new BigDecimal("0.60"), DiscountType.TWO4ONE));
+        cartItems.add(new Item(123, "Apple", new BigDecimal("0.60"), DiscountType.TWO4ONE));
+        cartItems.add(new Item(124, "Orange", new BigDecimal("0.25"), DiscountType.THREE4TWO));
+        cartItems.add(new Item(123, "Apple", new BigDecimal("0.60"), DiscountType.TWO4ONE));
 
         assertEquals(0, new BigDecimal("1.45").compareTo(checkoutService.sumUpCartItems(cartItems)));
     }
@@ -41,11 +41,11 @@ public class CheckoutServiceTest extends TestCase {
     @Test
     public void testSumUpCartItemsWithThreeForTwoSpecialOffers() {
         List<Item> cartItems = new ArrayList<>();
-        cartItems.add(new Item(123, new BigDecimal("0.60"), DiscountType.THREE4TWO));
-        cartItems.add(new Item(123, new BigDecimal("0.60"), DiscountType.THREE4TWO));
-        cartItems.add(new Item(124, new BigDecimal("0.25"), DiscountType.TWO4ONE));
-        cartItems.add(new Item(123, new BigDecimal("0.60"), DiscountType.THREE4TWO));
-        cartItems.add(new Item(123, new BigDecimal("0.60"), DiscountType.THREE4TWO));
+        cartItems.add(new Item(123, "Apple", new BigDecimal("0.60"), DiscountType.THREE4TWO));
+        cartItems.add(new Item(123, "Apple", new BigDecimal("0.60"), DiscountType.THREE4TWO));
+        cartItems.add(new Item(124, "Orange", new BigDecimal("0.25"), DiscountType.TWO4ONE));
+        cartItems.add(new Item(123, "Apple", new BigDecimal("0.60"), DiscountType.THREE4TWO));
+        cartItems.add(new Item(123, "Apple", new BigDecimal("0.60"), DiscountType.THREE4TWO));
 
         assertEquals(0, new BigDecimal("2.05").compareTo(checkoutService.sumUpCartItems(cartItems)));
     }
@@ -53,16 +53,16 @@ public class CheckoutServiceTest extends TestCase {
     @Test
     public void testSumUpCartItemsWithBothSpecialOffers() {
         List<Item> cartItems = new ArrayList<>();
-        cartItems.add(new Item(123, new BigDecimal("0.60"), DiscountType.THREE4TWO));
-        cartItems.add(new Item(123, new BigDecimal("0.60"), DiscountType.THREE4TWO));
-        cartItems.add(new Item(124, new BigDecimal("0.25"), DiscountType.TWO4ONE));
-        cartItems.add(new Item(123, new BigDecimal("0.60"), DiscountType.THREE4TWO));
-        cartItems.add(new Item(123, new BigDecimal("0.60"), DiscountType.THREE4TWO));
-        cartItems.add(new Item(124, new BigDecimal("0.25"), DiscountType.TWO4ONE));
-        cartItems.add(new Item(124, new BigDecimal("0.25"), DiscountType.TWO4ONE));
-        cartItems.add(new Item(123, new BigDecimal("0.60"), DiscountType.THREE4TWO));
-        cartItems.add(new Item(123, new BigDecimal("0.60"), DiscountType.THREE4TWO));
-        cartItems.add(new Item(125, new BigDecimal("0.50"), DiscountType.NONE));
+        cartItems.add(new Item(123, "Apple", new BigDecimal("0.60"), DiscountType.THREE4TWO));
+        cartItems.add(new Item(123, "Apple", new BigDecimal("0.60"), DiscountType.THREE4TWO));
+        cartItems.add(new Item(124, "Orange", new BigDecimal("0.25"), DiscountType.TWO4ONE));
+        cartItems.add(new Item(123, "Apple", new BigDecimal("0.60"), DiscountType.THREE4TWO));
+        cartItems.add(new Item(123, "Apple", new BigDecimal("0.60"), DiscountType.THREE4TWO));
+        cartItems.add(new Item(124, "Orange", new BigDecimal("0.25"), DiscountType.TWO4ONE));
+        cartItems.add(new Item(124, "Orange", new BigDecimal("0.25"), DiscountType.TWO4ONE));
+        cartItems.add(new Item(123, "Apple", new BigDecimal("0.60"), DiscountType.THREE4TWO));
+        cartItems.add(new Item(123, "Apple", new BigDecimal("0.60"), DiscountType.THREE4TWO));
+        cartItems.add(new Item(125, "Banana", new BigDecimal("0.50"), DiscountType.NONE));
 
         assertEquals(0, new BigDecimal("3.40").compareTo(checkoutService.sumUpCartItems(cartItems)));
     }

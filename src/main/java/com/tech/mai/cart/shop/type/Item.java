@@ -9,11 +9,13 @@ public class Item {
 
     long id;
     long barcode;
+    String name;
     BigDecimal price;
     DiscountType discountType;
 
-    public Item(long barcode, BigDecimal price, DiscountType discountType) {
+    public Item(long barcode, String name, BigDecimal price, DiscountType discountType) {
         this.barcode = barcode;
+        this.name = name;
         this.price = price;
         this.discountType = discountType;
     }
@@ -24,6 +26,10 @@ public class Item {
 
     public long getBarcode() {
         return barcode;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public BigDecimal getPrice() {
