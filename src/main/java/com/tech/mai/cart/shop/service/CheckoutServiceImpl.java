@@ -12,6 +12,8 @@ public class CheckoutServiceImpl implements CheckoutService {
 
     @Override
     public BigDecimal sumUpCartItems(List<Item> cartItems) {
-        return null;
+        BigDecimal total = BigDecimal.ZERO;
+        for (Item item : cartItems) { total = total.add(item.getPrice()); }
+        return total;
     }
 }
