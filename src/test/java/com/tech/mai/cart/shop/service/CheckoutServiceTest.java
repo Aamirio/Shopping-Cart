@@ -1,5 +1,6 @@
 package com.tech.mai.cart.shop.service;
 
+import com.tech.mai.cart.shop.type.DiscountType;
 import com.tech.mai.cart.shop.type.Item;
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -18,10 +19,10 @@ public class CheckoutServiceTest extends TestCase {
     @Test
     public void testSumUpCartItems() {
         List<Item> cartItems = new ArrayList<>();
-        cartItems.add(new Item(new BigDecimal("0.60")));
-        cartItems.add(new Item(new BigDecimal("0.60")));
-        cartItems.add(new Item(new BigDecimal("0.25")));
-        cartItems.add(new Item(new BigDecimal("0.60")));
+        cartItems.add(new Item(123, new BigDecimal("0.60"), DiscountType.NONE));
+        cartItems.add(new Item(123, new BigDecimal("0.60"), DiscountType.NONE));
+        cartItems.add(new Item(124, new BigDecimal("0.25"), DiscountType.NONE));
+        cartItems.add(new Item(123, new BigDecimal("0.60"), DiscountType.NONE));
 
         assertEquals(0, new BigDecimal("2.05").compareTo(checkoutService.sumUpCartItems(cartItems)));
     }
